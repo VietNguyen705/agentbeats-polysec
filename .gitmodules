@@ -1,0 +1,6 @@
+[submodule "tutorial-main"]
+	path = tutorial-main
+	url = https://github.com/agentbeats/tutorial.git
+[submodule "cybergym-main"]
+	path = cybergym-main
+	url = https://github.com/sunblaze-ucb/cybergym.git

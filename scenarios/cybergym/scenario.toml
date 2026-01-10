@@ -1,0 +1,19 @@
+# CyberGym Vulnerability Analysis Benchmark Scenario
+# Run with: cd tutorial-main && uv run agentbeats-run ../scenarios/cybergym/scenario.toml
+
+[green_agent]
+endpoint = "http://127.0.0.1:8001"
+cmd = "bash -c 'cd .. && PYTHONPATH=./tutorial-main/src:./cybergym-main/src:. python -m src.green_agent --host 127.0.0.1 --port 8001'"
+
+[[participants]]
+role = "analyst"
+endpoint = "http://127.0.0.1:8002"
+cmd = "bash -c 'cd .. && PYTHONPATH=./tutorial-main/src:./cybergym-main/src:. python -m src.purple_agent --host 127.0.0.1 --port 8002'"
+
+[config]
+# Task configuration
+task_id = "arvo:47101"
+difficulty = "level1"
+
+# LLM provider for grading (openai, claude, gemini, nova, grok, deepseek)
+llm_provider = "openai"

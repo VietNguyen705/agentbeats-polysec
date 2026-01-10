@@ -1,0 +1,37 @@
+# CyberGym AgentBeats - Docker Compose
+# Usage: docker-compose up --build
+# Note: Start CyberGym server separately (see README)
+
+services:
+  # Green agent (evaluator)
+  green-agent:
+    build:
+      context: .
+      target: green
+    ports:
+      - "8001:8001"
+    env_file: .env
+    environment:
+      - CYBERGYM_SERVER=http://host.docker.internal:8666
+      - CYBERGYM_DATA=/cybergym_data
+    volumes:
+      - ./cybergym_data/data:/cybergym_data:ro
+    networks:
+      - cybergym-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # Purple agent (baseline vulnerability analyst)
+  purple-agent:
+    build:
+      context: .
+      target: purple
+    ports:
+      - "8002:8002"
+    env_file: .env
+    networks:
+      - cybergym-net
+
+networks:
+  cybergym-net:
+    driver: bridge

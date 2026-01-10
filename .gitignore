@@ -1,0 +1,24 @@
+# Secrets
+.env
+
+# Virtual environment
+.venv/
+
+# Large data (users download separately)
+oss-fuzz-data/
+cybergym_data/
+cybergym-oss-fuzz-data-subset.7z
+
+# Runtime/generated
+server_poc/
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# Optional files
+PLAN.md
+*.pdf

@@ -1,0 +1,18 @@
+# CyberGym Scenario - Docker deployment
+# Agents are already running in Docker containers
+# Uses Docker service names for inter-container communication
+
+[green_agent]
+endpoint = "http://127.0.0.1:8001"
+# No cmd - agent already running in Docker
+
+[[participants]]
+role = "analyst"
+# Use Docker service name for green agent to reach purple agent
+endpoint = "http://purple-agent:8002"
+# No cmd - agent already running in Docker
+
+[config]
+task_id = "arvo:47101"
+difficulty = "level1"
+llm_provider = "openai"
